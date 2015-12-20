@@ -4,12 +4,14 @@
   "description": "apply a stream object to the component stream",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "prepublish": "node ./node_modules/babel/bin/babel.js src --out-dir .dist"
   },
   "author": "tusharmath@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "ava": "^0.8.0"
+    "ava": "^0.8.0",
+    "babel": "^5.8.34"
   },
   "dependencies": {
     "lodash": "^3.10.1",
