@@ -15,6 +15,7 @@ The following example will display the time and get updated every 100ms
 
 import {connect} from 'react-announce-connect'
 import {Observable} from 'rx'
+import {Component} from 'react'
 
 const timer = Observable.interval(100).map(() => new Date())
 
@@ -29,3 +30,4 @@ class Timer extends Component {
 }
 
 ```
+
