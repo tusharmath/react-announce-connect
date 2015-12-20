@@ -2,7 +2,7 @@
   "name": "react-announce-connect",
   "version": "0.0.0",
   "description": "apply a stream object to the component stream",
-  "main": "index.js",
+  "main": "./.dist/index.js",
   "scripts": {
     "test": "ava",
     "prepublish": "node ./node_modules/babel/bin/babel.js index.js --out-dir .dist"
