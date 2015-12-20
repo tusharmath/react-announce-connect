@@ -1,5 +1,6 @@
 # react-announce-connect
-Applies an observable onto the component state
+
+A [react-announce](https://github.com/tusharmath/react-announce) plugin that applies an observable onto the component state.
 
 ### Install
 
