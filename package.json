@@ -1,0 +1,18 @@
+{
+  "name": "react-announce-connect",
+  "version": "1.0.0",
+  "description": "apply a stream object to the component stream",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "author": "tusharmath@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "^0.8.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "rx": "^4.0.7"
+  }
+}
