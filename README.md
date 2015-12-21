@@ -8,8 +8,9 @@ A [react-announce](https://github.com/tusharmath/react-announce) declarative tha
 npm i react-announce-connect --save
 ```
 
-### Example
-The following example will display the time and get updated every 100ms 
+### Timer example
+
+The following example will display the time and get updated every 100ms.
 
 ```javascript
 import {connect} from 'react-announce-connect'
@@ -29,6 +30,8 @@ class Timer extends Component {
 }
 
 ```
+
+### Responsive font-size example
 Creating responsive Layouts. This will auto select the font-size based on the screen size.
 
 ```javascript
