@@ -19,9 +19,5 @@ const createStream = (stream, key) => stream
   .map(value => ({key, value}))
 
 export const connect = createDeclarative(function (stream, dispose, selector) {
-  const readableStream = Observable.combineLatest(map(selector, createStream)).map(x => reduce(x, reducer, {}))
-  dispose(stream
-    .filter(x => x.event === 'WILL_MOUNT')
-    .combineLatest(readableStream, (a, b) => b)
-    .subscribe(x => this.setState(x)))
+  dispose(Observable.combineLatest(map(selector, createStream)).map(x => reduce(x, reducer, {})).subscribe(x => this.setState(x)))
 })
