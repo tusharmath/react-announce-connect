@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "lodash": "^3.10.1",
-    "react-announce": "^0.0.2",
+    "react-announce": "0.x",
     "rx": "^4.0.7"
   }
 }
