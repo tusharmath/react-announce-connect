@@ -44,32 +44,16 @@ const responsive = windowEvents('resize')
   .debounce(300)
   .pluck('target', 'innerWidth')
   .map(x => {
-    /* Extra small devices (phones, less than 768px) */
     if(x < 768){ return 'xs' }
-    
-    /* Small devices (tablets, 768px and up) */
     if(x < 992){ return 'sm' }
-    
-    /* Medium devices (desktops, 992px and up) */
     if(x < 1200){ return 'md' }
-    
-    /* Large devices (large desktops, 1200px and up) */
     return 'lg'
   })
 
 @connect({responsive})
 class Heading extends Component {
   render () {
-    
-    const style = {
-      fontSize: {
-        xs: 10
-        sm: 12,
-        md: 14,
-        lg: 18
-      }[this.state.screen]
-    }
-  
+    const style = {fontSize: {xs: 10, sm: 12, md: 14, lg: 18}[this.state.screen]}
     return (
       <div style={style}>Hello World!</div>
     )
