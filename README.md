@@ -17,7 +17,7 @@ import {connect} from 'react-announce-connect'
 import {Observable} from 'rx'
 import {Component} from 'react'
 
-const timer = Observable.interval(100).map(() => new Date())
+const time = Observable.interval(100).map(() => new Date())
 
 @connect({time})
 class Timer extends Component {
