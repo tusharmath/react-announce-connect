@@ -40,7 +40,7 @@ import {Observable} from 'rx'
 import {Component} from 'react'
 
 const windowEvents = Observable.fromCallback(window.addEventListner)
-const responsive = windowEvents('resize')
+const _screen = windowEvents('resize')
   .debounce(300)
   .pluck('target', 'innerWidth')
   .map(x => {
@@ -49,8 +49,14 @@ const responsive = windowEvents('resize')
     if(x < 1200){ return 'md' }
     return 'lg'
   })
+  
+/*
+You can create a new reusable decorator for screen size
+*/
+const screen =  connect({screen: _screen})
 
-@connect({responsive})
+
+@screen
 class Heading extends Component {
   render () {
     const style = {fontSize: {xs: 10, sm: 12, md: 14, lg: 18}[this.state.screen]}
@@ -61,4 +67,18 @@ class Heading extends Component {
 }
 
 ```
+A reusable screen decorator can be created from the connect decorator.
 
+### Connection to multiple streams
+
+The connect declarative can connect to multiple stream as follows —
+```javascript
+@connect({key1: stream1, key2: stream2})
+class MyComponent extends React {
+  ...
+}
+```
+Whenever either of the streams viz — `stream1` or `stream2`, emit a value, it would be applied to the state property `key1` and `key2` respectively.
+
+## Performance
+The `@connect` declarative, optimizes internally so that the state doesn't get updated unless there is an actual change in the value. For instance, if a stream keeps emiting the same value again and again, unless the value changes, the state will not be updated.
