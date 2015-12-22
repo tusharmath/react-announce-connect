@@ -1,6 +1,6 @@
 {
   "name": "react-announce-connect",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "apply a stream object to the component stream",
   "main": "./.dist/index.js",
   "scripts": {
