@@ -17,5 +17,6 @@
     "lodash": "^3.10.1",
     "react-announce": "0.x",
     "rx": "^4.0.7"
-  }
+  },
+  "repository": "https://github.com/tusharmath/react-announce-connect"
 }
