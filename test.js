@@ -3,7 +3,6 @@
  */
 
 'use strict'
-import 'babel-core/register'
 import {Observable, ReactiveTest, TestScheduler} from 'rx'
 import test from 'ava'
 
