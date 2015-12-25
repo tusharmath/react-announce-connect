@@ -16,5 +16,20 @@
     "react-announce": "0.x",
     "rx": "^4.0.7"
   },
-  "repository": "https://github.com/tusharmath/react-announce-connect"
+  "repository": "https://github.com/tusharmath/react-announce-connect",
+  "keywords": [
+    "decorators",
+    "declarative",
+    "react",
+    "rx",
+    "observable",
+    "stream",
+    "framework",
+    "announce",
+    "state",
+    "merge",
+    "extension",
+    "plugin",
+    "immutable"
+  ]
 }
