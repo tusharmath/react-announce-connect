@@ -16,13 +16,12 @@ const reducer = (m, v) => {
 const createStream = (stream, key) => stream
   .filter(x => x !== undefined)
   .distinctUntilChanged()
-  .map(value => ({key, value}))
+  .map(value => ({[key]: value}))
 
 exports.connect = createDeclarative(function (stream, dispose, selector) {
   dispose(
     Observable
-      .combineLatest(_.map(selector, createStream))
-      .map(x => _.reduce(x, reducer, {}))
+      .merge(_.map(selector, createStream))
       .subscribe(x => this.setState(x))
   )
 })
