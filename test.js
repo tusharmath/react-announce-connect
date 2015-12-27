@@ -9,35 +9,23 @@ import test from 'ava'
 import {connect} from './index'
 
 const {onNext} = ReactiveTest
-
 test('connects to stream directly', t => {
-  var state = []
-  var sh = new TestScheduler()
-  var src1 = sh.createHotObservable(
-    onNext(200, 100),
-    onNext(210, 200),
-    onNext(220, 300)
-  )
-  var src2 = sh.createHotObservable(
-    onNext(215, 1000),
-    onNext(230, 2000)
-  )
+  var src1 = Observable.range(1, 2)
+  var src2 = Observable.range(10, 2)
 
+  var state = []
   const MockComponent = connect({src1, src2})(
-    class MockComponent {
+    class A {
       setState (x) {
         state.push(x)
       }
     })
   var c = new MockComponent()
   c.componentWillMount()
-  sh.start()
   t.same(state, [
-    {src1: 100},
-    {src1: 200},
-    {src2: 1000},
-    {src1: 300},
-    {src2: 2000}
+    {src1: 1, src2: 10},
+    {src1: 2, src2: 10},
+    {src1: 2, src2: 11}
   ])
 })
 
