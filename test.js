@@ -85,4 +85,30 @@ test('ignores empty duplicated values', t => {
   t.same(state, [{ob: 100}, {ob: 300}])
 })
 
-test('support subscription with latest values', x => x )
+test('support subscription with latest values', t => {
+  var state = []
+  var sh = new TestScheduler()
+  var src1 = sh.createHotObservable(
+    onNext(200, 100),
+    onNext(210, 200),
+    onNext(220, 300)
+  )
+  var src2 = sh.createHotObservable(
+    onNext(215, 1000),
+    onNext(230, 2000)
+  )
+
+  const MockComponent = connect({src1, src2})(
+    class MockComponent {
+      setState (x) {
+        state.push(x)
+      }
+    })
+  var c = new MockComponent()
+  sh.start()
+  c.componentWillMount()
+  t.same(state, [
+    {src1: 300},
+    {src2: 2000}
+  ])
+})
