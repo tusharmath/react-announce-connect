@@ -3,7 +3,7 @@
  */
 
 'use strict'
-import {Observable, ReactiveTest, TestScheduler} from 'rx'
+import {Observable, ReactiveTest, TestScheduler, BehaviorSubject} from 'rx'
 import test from 'ava'
 
 import {connect} from './index'
@@ -73,18 +73,10 @@ test('ignores empty duplicated values', t => {
   t.same(state, [{ob: 100}, {ob: 300}])
 })
 
-test('support subscription with latest values', t => {
+test('support subscription of BehaviorSubject type', t => {
   var state = []
-  var sh = new TestScheduler()
-  var src1 = sh.createHotObservable(
-    onNext(200, 100),
-    onNext(210, 200),
-    onNext(220, 300)
-  )
-  var src2 = sh.createHotObservable(
-    onNext(215, 1000),
-    onNext(230, 2000)
-  )
+  var src1 = new BehaviorSubject(10)
+  var src2 = new BehaviorSubject(20)
 
   const MockComponent = connect({src1, src2})(
     class MockComponent {
@@ -93,10 +85,10 @@ test('support subscription with latest values', t => {
       }
     })
   var c = new MockComponent()
-  sh.start()
+  src1.onNext(11)
+  src2.onNext(21)
+  src1.onNext(12)
+  src2.onNext(22)
   c.componentWillMount()
-  t.same(state, [
-    {src1: 300},
-    {src2: 2000}
-  ])
+  t.same(state, [{src1: 12, src2: 22}])
 })
