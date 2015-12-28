@@ -8,11 +8,6 @@ const createDeclarative = require('react-announce').createDeclarative
 const Observable = require('rx').Observable
 const _ = require('lodash')
 
-const reducer = (m, v) => {
-  m[v.key] = v.value
-  return m
-}
-
 const createStream = (stream, key) => stream
   .filter(x => x !== undefined)
   .distinctUntilChanged()
