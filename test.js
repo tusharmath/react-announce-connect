@@ -104,3 +104,25 @@ test('support subscription of BehaviorSubject type', t => {
   c.componentWillMount()
   t.same(state, [{src1: 12}, {src2: 22}])
 })
+
+test('support subscription with a single BehaviorSubject type', t => {
+  var state = []
+  var subject = new BehaviorSubject(0)
+  var even = subject.filter(x => x % 2 === 0)
+  var odd = subject.filter(x => x % 2 === 1)
+
+  const MockComponent = connect({even, odd})(
+    class MockComponent {
+      setState (x) {
+        state.push(x)
+      }
+    })
+  var c = new MockComponent()
+  subject.onNext(1)
+  subject.onNext(2)
+  subject.onNext(2)
+  subject.onNext(4)
+  subject.onNext(5)
+  c.componentWillMount()
+  t.same(state, [{even: 4}, {odd: 5}])
+})
