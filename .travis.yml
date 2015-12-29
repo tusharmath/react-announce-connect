@@ -10,6 +10,7 @@ deploy:
   provider: npm
   email: tusharmath@gmail.com
   on:
+    tags: true
     branch: master
   api_key:
     secure: p4JQxCc2hlNuMyU9MrQYf09pJ+cD6vB1tWhfgsHG1otDdjRNHXzPoKxLsUMzup1pV5pKBqRRFq7iahGn3NBndjMY8sr0wlMzBozJXpd6cKBZAvyNSX9+IQUzw/8R2l/GGoUvQDn0iNmgdjvW3Y1cKXvF+Vl7G1M+uW8tmkkHHeIqG/yCwnxSIBle2vwcO6jBr7UP2pjoRj8OJvFcx81q4UgAYTqb2n/y7kZ94I8maAQRoQaoC5gDVyuOFDKcagSDtqRjLwgReB4ymaNAJn5KahuGncb2FGRXF3AwzGB5S34RRqbpJPHgD6lmery+JqgTj4T0rWPxjPlOduomwUcNeqZC6KvpYpApjXW1PGnd89sYVnXtcRqnFR3sZ53Ae+VxAnW5VUK0y9olwlNZ78i0TOwRK9SbJjh8gEHTqsJfbLRFhrdyRY/xFTuPhEonX3wU3DyMNJuBqOalcIKCcWKqrUtQjUdhyrGx/L1UNFbXShBucmerevhT2GQ/DBGuH/VfaA2FuC387ndODEWwJwPmtiSpcp/nIu0yEZU+naf9qs+wJ2PhVHo+CFQELjaS9H8fwzQNYbItSolyXNw0g28j+TCL9T5tIIV1m2u0WTCedkILQGwXY7JrdqhizrM2dlKdbdBLnGft/b9NSmv2xYmugWn7qP5uy63mUcEpm9sMGgA=
