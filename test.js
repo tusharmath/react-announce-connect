@@ -3,7 +3,7 @@
  */
 
 'use strict'
-import {Observable, ReactiveTest, TestScheduler, BehaviorSubject} from 'rx'
+import {Observable, ReactiveTest, TestScheduler, BehaviorSubject, Subject} from 'rx'
 import test from 'ava'
 
 import {connect} from './index'
@@ -125,4 +125,22 @@ test('support subscription with a single BehaviorSubject type', t => {
   subject.onNext(5)
   c.componentWillMount()
   t.same(state, [{even: 4}, {odd: 5}])
+})
+
+test('prioritize startWith() when compared to undefined', t => {
+  var state = []
+  var scheduler = new TestScheduler()
+  var subject = scheduler.createHotObservable(
+    onNext(210, undefined)
+  )
+  const MockComponent = connect({subject: subject.startWith(100)})(
+    class MockComponent {
+      setState (x) {
+        state.push(x)
+      }
+    })
+  var c = new MockComponent()
+  scheduler.start()
+  c.componentWillMount()
+  t.same(state, [{subject: 100}])
 })
