@@ -1,22 +1,27 @@
 {
   "name": "react-announce-connect",
-  "version": "0.1.1",
   "description": "apply a stream object to the component stream",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": "tusharmath@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "ava": "^0.11.0"
+    "ava": "^0.8.0",
+    "cz-conventional-changelog": "^1.1.5",
+    "semantic-release": "^4.3.5"
   },
   "dependencies": {
     "lodash": "^4.2.0",
     "react-announce": "0.x",
     "rx": "^4.0.7"
   },
-  "repository": "https://github.com/tusharmath/react-announce-connect",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tusharmath/react-announce-connect.git"
+  },
   "keywords": [
     "decorators",
     "declarative",
@@ -31,5 +36,10 @@
     "extension",
     "plugin",
     "immutable"
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
