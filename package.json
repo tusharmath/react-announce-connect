@@ -9,10 +9,10 @@
   "author": "tusharmath@gmail.com",
   "license": "ISC",
   "devDependencies": {
-    "ava": "^0.8.0"
+    "ava": "^0.11.0"
   },
   "dependencies": {
-    "lodash": "^3.10.1",
+    "lodash": "^4.2.0",
     "react-announce": "0.x",
     "rx": "^4.0.7"
   },
