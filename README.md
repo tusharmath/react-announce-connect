@@ -1,5 +1,6 @@
-# react-announce-connect [![Build Status](https://travis-ci.org/tusharmath/react-announce-connect.svg?branch=master)](https://travis-ci.org/tusharmath/react-announce-connect)
-
+# react-announce-connect
+[![Build Status](https://travis-ci.org/tusharmath/react-announce-connect.svg?branch=master)](https://travis-ci.org/tusharmath/react-announce-connect)
+[![npm](https://img.shields.io/npm/v/npm.svg)](react-announce-connect)
 A [react-announce](https://github.com/tusharmath/react-announce) declarative that applies an observable onto the component state.
 
 ### Install
