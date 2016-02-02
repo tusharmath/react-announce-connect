@@ -11,13 +11,17 @@
   "devDependencies": {
     "ava": "^0.8.0",
     "cz-conventional-changelog": "^1.1.5",
-    "semantic-release": "^4.3.5"
-  },
-  "dependencies": {
-    "lodash": "^4.2.0",
-    "react-announce": "0.x",
+    "semantic-release": "^4.3.5",
     "rx": "^4.0.7"
   },
+  "peerDependencies": {
+    "rx": "^4.0.7"
+  },
+  "dependencies": {
+	"lodash": "^4.2.0",
+    "react-announce": "0.x"
+  },
+
   "repository": {
     "type": "git",
     "url": "https://github.com/tusharmath/react-announce-connect.git"
