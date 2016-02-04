@@ -18,7 +18,7 @@
     "rx": "^4.0.7"
   },
   "dependencies": {
-    "react-announce": "1.0.0"
+    "react-announce": "1.0.1"
   },
   "repository": {
     "type": "git",
