@@ -34,5 +34,5 @@ exports.connect = selector => component => {
         .merge(Object.keys(selector).map(x => createStream(selector[x], x)))
         .subscribe(x => this.setState(x))
     )
-  })(newSelector, component)
+  })(newSelector)(component)
 }
