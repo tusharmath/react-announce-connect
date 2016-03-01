@@ -1,6 +1,14 @@
 # react-announce-connect
-[![Build Status](https://travis-ci.org/tusharmath/react-announce-connect.svg?branch=master)](https://travis-ci.org/tusharmath/react-announce-connect)
-[![npm](https://img.shields.io/npm/v/npm.svg)](react-announce-connect)
+
+[![Build Status][travis-svg]][travis]
+[![npm][npm-svg]][npm]
+
+[travis-svg]: https://travis-ci.org/tusharmath/react-announce-connect.svg?branch=master
+[travis]: https://travis-ci.org/tusharmath/react-announce-connect
+[npm-svg]: https://img.shields.io/npm/v/react-announce-connect.svg
+[npm]: https://www.npmjs.com/package/react-announce-connect
+
+
 
 A [react-announce](https://github.com/tusharmath/react-announce) declarative that applies an observable onto the component state.
 
@@ -51,7 +59,7 @@ const _screen = windowEvents('resize')
     if(x < 1200){ return 'md' }
     return 'lg'
   })
-  
+
 /*
 You can create a new reusable decorator for screen size
 */
