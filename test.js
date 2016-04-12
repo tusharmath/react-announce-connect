@@ -3,10 +3,9 @@
  */
 
 'use strict'
-import { Observable, ReactiveTest, TestScheduler, BehaviorSubject, Subject } from 'rx'
+import {ReactiveTest, TestScheduler, BehaviorSubject} from 'rx'
 import test from 'ava'
-
-import { connect } from './index'
+import {connect} from './index'
 
 const {onNext} = ReactiveTest
 
@@ -25,14 +24,14 @@ test('connects to stream directly', t => {
 
   const MockComponent = connect({src1, src2})(
     class MockComponent {
-    setState(x) {
-      state.push(x)
-    }
+      setState (x) {
+        state.push(x)
+      }
     })
   var c = new MockComponent()
   c.componentWillMount()
   sh.start()
-  t.same(state, [
+  t.deepEqual(state, [
     {src1: 100},
     {src1: 200},
     {src2: 1000},
@@ -53,36 +52,37 @@ test('ignores empty values', t => {
 
   const B = connect({ob})(
     class B {
-    setState(x) {
-      state.push(x)
-    }
+      setState (x) {
+        state.push(x)
+      }
     })
   var b = new B()
   b.componentWillMount()
   scheduler.start()
-  t.same(state, [{ob: 100}, {ob: 200}, {ob: undefined}, {ob: 400}])
+  t.deepEqual(state, [{ob: 100}, {ob: 200}, {ob: undefined}, {ob: 400}])
 })
 
 test('ignores empty duplicated values', t => {
   var state = []
   var scheduler = new TestScheduler()
+  var val0 = {x: 100}
   var ob = scheduler.createHotObservable(
-    onNext(1, 100),
-    onNext(2, 100),
-    onNext(3, 300),
-    onNext(4, 300)
+    onNext(1, val0),
+    onNext(2, val0),
+    onNext(3, {x: 300}),
+    onNext(4, {x: 300})
   )
 
   const MockComponent = connect({ob})(
     class MockComponent {
-    setState(x) {
-      state.push(x)
-    }
+      setState (x) {
+        state.push(x.ob)
+      }
     })
   var c = new MockComponent()
   c.componentWillMount()
   scheduler.start()
-  t.same(state, [{ob: 100}, {ob: 300}])
+  t.deepEqual(state, [{x: 100}, {x: 300}, {x: 300}])
 })
 
 test('support subscription of BehaviorSubject type', t => {
@@ -92,9 +92,9 @@ test('support subscription of BehaviorSubject type', t => {
 
   const MockComponent = connect({src1, src2})(
     class MockComponent {
-    setState(x) {
-      state.push(x)
-    }
+      setState (x) {
+        state.push(x)
+      }
     })
   var c = new MockComponent()
   src1.onNext(11)
@@ -102,7 +102,7 @@ test('support subscription of BehaviorSubject type', t => {
   src1.onNext(12)
   src2.onNext(22)
   c.componentWillMount()
-  t.same(state, [{src1: 12}, {src2: 22}])
+  t.deepEqual(state, [{src1: 12}, {src2: 22}])
 })
 
 test('prioritize startWith() when compared to undefined', t => {
@@ -113,12 +113,12 @@ test('prioritize startWith() when compared to undefined', t => {
   )
   const MockComponent = connect({subject: subject.startWith(100)})(
     class MockComponent {
-    setState(x) {
-      state.push(x)
-    }
+      setState (x) {
+        state.push(x)
+      }
     })
   var c = new MockComponent()
   scheduler.start()
   c.componentWillMount()
-  t.same(state, [{subject: 100}])
+  t.deepEqual(state, [{subject: 100}])
 })
