@@ -1,5 +1,7 @@
 # react-announce-connect
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/tusharmath/react-announce-connect.svg)](https://greenkeeper.io/)
+
 [![Build Status][travis-svg]][travis]
 [![npm][npm-svg]][npm]
 
